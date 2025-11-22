@@ -13,13 +13,11 @@ jobs:
       # Шаг 1: Получить код из репозитория
       - name: Check out repository code
         uses: actions/checkout@v4
-
-      # Шаг 2: Собрать Docker образ (из папки app-src)
+      # Шаг 2: Собрать Docker образ из папки app-src
       - name: Build Docker image
         run: |
-          docker build -t myapp:test ./app-src
+          docker build -t myapp:test -f ./app-src/Dockerfile .
           echo "Docker image built successfully!"
-
       # Шаг 3: Проверить, что контейнер запускается
       - name: Test container
         run: |
