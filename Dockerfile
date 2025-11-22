@@ -2,13 +2,13 @@
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
-# Копируем файл решения и файлы проектов
-COPY app-src/ExhibitionApp.sln .
-COPY app-src/ExhibitionApp/*.csproj ./ExhibitionApp/
+# Копируем файл решения и файлы проектов из app-src
+COPY ./app-src/ExhibitionApp.sln .
+COPY ./app-src/ExhibitionApp/*.csproj ./ExhibitionApp/
 RUN dotnet restore
 
-# Копируем весь исходный код
-COPY app-src/ .
+# Копируем весь исходный код из app-src
+COPY ./app-src/ .
 
 # Публикуем приложение
 WORKDIR /src/ExhibitionApp
